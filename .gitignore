@@ -1,3 +1,5 @@
-.venv_ncei_access
+.venv_ncei_access/
 .DS_Store
 __pycache__/
+dist/
+
