@@ -1,0 +1,1745 @@
+{
+  "id": "daily-summaries",
+  "name": "Daily Summaries",
+  "dsiNumber": "910101",
+  "featured": true,
+  "fileId": "gov.noaa.ncdc:C00861",
+  "searchWeight": 1,
+  "interfaceOptions": {
+    "stationPrefix": "GHCND",
+    "previewOptions": {
+      "dateSelection": "month",
+      "stationSelection": false,
+      "format": ["pdf"]
+    },
+    "viewOptions": [
+      {
+        "config": "dataTypes",
+        "displayOrder": 1,
+        "title": "Data Type",
+        "type": "scrodal"
+      },
+      {
+        "config": "yyyy-MM-dd",
+        "displayOrder": 0,
+        "title": "Period of Record",
+        "type": "periodOfRecord"
+      },
+      {
+        "config": "stations",
+        "displayOrder": 2,
+        "title": "Station",
+        "type": "scrodal"
+      }
+    ]
+  },
+  "orderOptions": {
+    "maxFileCount": 1000,
+    "maxFileSize": 1000000000,
+    "type": "cdo",
+    "interfaceOptions": {
+      "formats": ["pdf", "csv"]
+    },
+    "fields": [
+      {
+        "id": "bbox",
+        "multivalue": true,
+        "type": "bbox",
+        "interfaceOptions": {
+          "displayName": "Bounding Box",
+          "displayOrder": 2,
+          "editable": false,
+          "toolTip": "Edit the Bounding Box by closing this modal and using the map tool."
+        }
+      },
+      {
+        "id": "dateRange",
+        "multivalue": true,
+        "type": "dateRange",
+        "interfaceOptions": {
+          "displayName": "Date Range",
+          "displayOrder": 0,
+          "editable": false,
+          "toolTip": "Edit the Date Range by closing this modal and modifying the when input of your search."
+        }
+      },
+      {
+        "id": "stations",
+        "multivalue": true,
+        "regex": "[a-zA-Z0-9:\\-_]+",
+        "type": "term",
+        "interfaceOptions": {
+          "displayName": "Stations",
+          "displayOrder": 5,
+          "editable": false,
+          "toolTip": "Edit Stations by closing this modal and deselecting the file. <br /><strong> Note: </strong> Each file contains one station. "
+        }
+      }
+    ],
+    "formatFields": [
+      {
+        "format": "csv",
+        "fields": [
+          {
+            "id": "dataTypes",
+            "multivalue": true,
+            "regex": "[a-zA-Z0-9:\\-_ ]+",
+            "type": "term",
+            "interfaceOptions": {
+              "displayName": "Data Types",
+              "displayOrder": 1,
+              "editable": true,
+              "toolTip": "Data Types are the elements representing environmental observations in NCEI's data."
+            }
+          },
+          {
+            "id": "includeAttributes",
+            "multivalue": false,
+            "type": "boolean",
+            "interfaceOptions": {
+              "displayName": "Include Attributes",
+              "displayOrder": 10,
+              "editable": true,
+              "toolTip": "Select 'Yes' or 'No' for data attributes to be included in your order (CSV only)."
+            },
+            "defaultValues": ["No"],
+            "values": ["No", "Yes"]
+          },
+          {
+            "id": "includeStationLocation",
+            "multivalue": false,
+            "type": "boolean",
+            "interfaceOptions": {
+              "displayName": "Include Station Location",
+              "displayOrder": 8,
+              "editable": true,
+              "toolTip": "Select 'Yes' or 'No' for latitude/longitude coordinates to appear in your file. (CSV only)"
+            },
+            "defaultValues": ["No"],
+            "values": ["No", "Yes"]
+          },
+          {
+            "id": "includeStationName",
+            "multivalue": false,
+            "type": "boolean",
+            "interfaceOptions": {
+              "displayName": "Include Station Name",
+              "displayOrder": 7,
+              "editable": true,
+              "toolTip": "Select 'Yes' or 'No' for a station name to appear in your file. (CSV only)."
+            },
+            "defaultValues": ["No"],
+            "values": ["No", "Yes"]
+          },
+          {
+            "id": "units",
+            "multivalue": false,
+            "type": "term",
+            "interfaceOptions": {
+              "displayName": "Units",
+              "displayOrder": 3,
+              "editable": true,
+              "toolTip": "Units of measure are either <br /> 'Standard (US) or Metric'."
+            },
+            "defaultValues": ["Standard"],
+            "values": ["Metric", "Standard"]
+          }
+        ]
+      },
+      {
+        "format": "json",
+        "fields": [
+          {
+            "id": "dataTypes",
+            "multivalue": true,
+            "regex": "[a-zA-Z0-9:\\-_ ]+",
+            "type": "term",
+            "interfaceOptions": {
+              "displayName": "Data Types",
+              "displayOrder": 1,
+              "editable": true,
+              "toolTip": "Data Types are the elements representing environmental observations in NCEI's data."
+            }
+          },
+          {
+            "id": "includeAttributes",
+            "multivalue": false,
+            "type": "boolean",
+            "interfaceOptions": {
+              "displayName": "Include Attributes",
+              "displayOrder": 10,
+              "editable": true,
+              "toolTip": "Select 'Yes' or 'No' for data attributes to be included in your order (CSV only)."
+            },
+            "defaultValues": ["No"],
+            "values": ["No", "Yes"]
+          },
+          {
+            "id": "includeStationLocation",
+            "multivalue": false,
+            "type": "boolean",
+            "interfaceOptions": {
+              "displayName": "Include Station Location",
+              "displayOrder": 8,
+              "editable": true,
+              "toolTip": "Select 'Yes' or 'No' for latitude/longitude coordinates to appear in your file. (CSV only)"
+            },
+            "defaultValues": ["No"],
+            "values": ["No", "Yes"]
+          },
+          {
+            "id": "includeStationName",
+            "multivalue": false,
+            "type": "boolean",
+            "interfaceOptions": {
+              "displayName": "Include Station Name",
+              "displayOrder": 7,
+              "editable": true,
+              "toolTip": "Select 'Yes' or 'No' for a station name to appear in your file. (CSV only)."
+            },
+            "defaultValues": ["No"],
+            "values": ["No", "Yes"]
+          },
+          {
+            "id": "units",
+            "multivalue": false,
+            "type": "term",
+            "interfaceOptions": {
+              "displayName": "Units",
+              "displayOrder": 3,
+              "editable": true,
+              "toolTip": "Units of measure are either <br /> 'Standard (US) or Metric'."
+            },
+            "defaultValues": ["Standard"],
+            "values": ["Metric", "Standard"]
+          }
+        ]
+      },
+      {
+        "format": "pdf",
+        "fields": [
+          {
+            "id": "includeDocumentation",
+            "multivalue": false,
+            "type": "boolean",
+            "interfaceOptions": {
+              "displayName": "Include Documentation",
+              "displayOrder": 9,
+              "editable": true,
+              "toolTip": "Documentation can be included with PDF format since the documentation is a PDF. (Not possible with CSV)"
+            },
+            "defaultValues": ["No"],
+            "values": ["No", "Yes"]
+          }
+        ]
+      }
+    ]
+  },
+  "searchOptions": {
+    "fields": [
+      {
+        "id": "bbox",
+        "description": "",
+        "multivalue": false,
+        "type": "bbox",
+        "interfaceOptions": {
+          "displayName": "Bounding Box",
+          "displayOrder": 1,
+          "toolTip": "<p>Enter a location or draw a bounding box using the map tool.</p> <p>Example:<strong> New York City, NY</strong> or <strong>Chicago</strong></p> <a href='/support/access-search'><span class='fa fa-info-circle mr-1'></span>Find out more</a>",
+          "type": "where"
+        },
+        "documentFieldName": ["location"]
+      },
+      {
+        "id": "dataTypes",
+        "autocomplete": "https://www.ncei.noaa.gov/access/services/search/v1/autocomplete?field=dataTypes&dataset=daily-summaries",
+        "description": "",
+        "joinCondition": "and",
+        "multivalue": true,
+        "type": "term",
+        "interfaceOptions": {
+          "displayName": "Data Types",
+          "displayOrder": 1,
+          "toolTip": "<p>Data Types are the elements representing environmental observations in NCEI's data.</p> <a href='/support/access-search'><span class='fa fa-info-circle mr-1'></span>Find out more</a>",
+          "type": "what"
+        },
+        "documentFieldName": ["dataTypes.id"],
+        "nestedFields": ["endDate", "startDate"]
+      },
+      {
+        "id": "endDate",
+        "description": "",
+        "multivalue": false,
+        "type": "endDate",
+        "interfaceOptions": {
+          "displayName": "End Date",
+          "displayOrder": 4,
+          "toolTip": "<p>Enter a single date or click the <strong>Select Date Range</strong> option to enter both a start and end date.</p> <p>Date format is <strong>YYYY-MM-DD</strong>.</p> <a href='/support/access-search'><span class='fa fa-info-circle mr-1'></span>Find out more</a>",
+          "type": "when"
+        },
+        "documentFieldName": ["dateRange.start"]
+      },
+      {
+        "id": "place",
+        "autocomplete": "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/suggest?f=json&maxSuggestions=7",
+        "description": "",
+        "multivalue": false,
+        "type": "shapeService",
+        "interfaceOptions": {
+          "displayName": "Place",
+          "displayOrder": 2,
+          "toolTip": "<p>Enter a location or draw a bounding box using the map tool.</p> <p>Example:<strong> New York City, NY</strong> or <strong>Chicago</strong></p> <a href='/support/access-search'><span class='fa fa-info-circle mr-1'></span>Find out more</a>",
+          "type": "where"
+        },
+        "documentFieldName": ["location"]
+      },
+      {
+        "id": "startDate",
+        "description": "",
+        "multivalue": false,
+        "type": "startDate",
+        "interfaceOptions": {
+          "displayName": "Start Date",
+          "displayOrder": 3,
+          "toolTip": "<p>Enter a single date or click the <strong>Select Date Range</strong> option to enter both a start and end date.</p> <p>Date format is <strong>YYYY-MM-DD</strong>.</p> <a href='/support/access-search'><span class='fa fa-info-circle mr-1'></span>Find out more</a>",
+          "type": "when"
+        },
+        "documentFieldName": ["dateRange.end"]
+      },
+      {
+        "id": "stations",
+        "autocomplete": "https://www.ncei.noaa.gov/access/services/search/v1/autocomplete?field=stations&dataset=daily-summaries",
+        "joinCondition": "or",
+        "multivalue": true,
+        "type": "term",
+        "interfaceOptions": {
+          "displayName": "Station Search",
+          "displayOrder": 5,
+          "placeholder": "Ex: Airport",
+          "toolTip": "Enter a station ID or name term and select from the autocomplete suggestions to search by station."
+        },
+        "documentFieldName": ["stations.id"],
+        "nestedFields": ["dataTypes"]
+      }
+    ]
+  },
+  "dataTypes": [
+    {
+      "id": "ACMC",
+      "name": "Average cloudiness midnight to midnight from 30-second ceilometer data",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "percent"
+    },
+    {
+      "id": "ACMH",
+      "name": "Average cloudiness midnight to midnight from manual observations",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "percent"
+    },
+    {
+      "id": "ACSC",
+      "name": "Average cloudiness sunrise to sunset from 30-second ceilometer data",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "percent"
+    },
+    {
+      "id": "ACSH",
+      "name": "Average cloudiness sunrise to sunset from manual observations",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "percent"
+    },
+    {
+      "id": "AWDR",
+      "name": "Average daily wind direction (degrees)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "AWND",
+      "name": "Average daily wind speed",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "meters per second",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 2,
+      "standardOutputUnits": "miles per hour",
+      "units": "meters per second"
+    },
+    {
+      "id": "DAEV",
+      "name": "Number of days included in the multiday evaporation total (MDEV)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "days"
+    },
+    {
+      "id": "DAPR",
+      "name": "Number of days included in the multiday precipitation total (MDPR)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "days"
+    },
+    {
+      "id": "DASF",
+      "name": "Number of days included in the multiday snow fall total (MDSF)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "days"
+    },
+    {
+      "id": "DATN",
+      "name": "Number of days included in the multiday minimum temperature (MDTN)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "days"
+    },
+    {
+      "id": "DATX",
+      "name": "Number of days included in the multiday maximum temperature (MDTX)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "days"
+    },
+    {
+      "id": "DAWM",
+      "name": "Number of days included in the multiday wind movement (MDWM)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "days"
+    },
+    {
+      "id": "DWPR",
+      "name": "Number of days with non-zero precipitation included in multiday precipitation t",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "days"
+    },
+    {
+      "id": "EVAP",
+      "name": "Evaporation of water from evaporation pan",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "millimeters",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 2,
+      "standardOutputUnits": "inches",
+      "units": "millimeters"
+    },
+    {
+      "id": "FMTM",
+      "name": "Time of fastest mile or fastest 1-minute wind",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "FRGB",
+      "name": "Base of frozen ground layer",
+      "metricOutputPrecision": 0,
+      "metricOutputUnits": "centimeters",
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "inches",
+      "units": "centimeters"
+    },
+    {
+      "id": "FRGT",
+      "name": "Top of frozen ground layer",
+      "metricOutputPrecision": 0,
+      "metricOutputUnits": "centimeters",
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "inches",
+      "units": "centimeters"
+    },
+    {
+      "id": "FRTH",
+      "name": "Thickness of frozen ground layer",
+      "metricOutputPrecision": 0,
+      "metricOutputUnits": "centimeters",
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "inches",
+      "units": "centimeters"
+    },
+    {
+      "id": "GAHT",
+      "name": "Difference between river and gauge height",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "centimeters",
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "inches",
+      "units": "centimeters"
+    },
+    {
+      "id": "MDEV",
+      "name": "Multiday evaporation total (use with DAEV)",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "millimeters",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "inches",
+      "units": "millimeters"
+    },
+    {
+      "id": "MDPR",
+      "name": "Multiday precipitation total (use with DAPR and DWPR, if available)",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "millimeters",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 2,
+      "standardOutputUnits": "inches",
+      "units": "millimeters"
+    },
+    {
+      "id": "MDSF",
+      "name": "Multiday snowfall total",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "millimeters",
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 2,
+      "standardOutputUnits": "inches",
+      "units": "millimeters"
+    },
+    {
+      "id": "MDTN",
+      "name": "Multiday minimum temperature (use with DATN)",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "MDTX",
+      "name": "Multiday maximum temperature (use with DATX)",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "MDWM",
+      "name": "Multiday wind movement",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "kilometers",
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "miles",
+      "units": "kilometers"
+    },
+    {
+      "id": "MNPN",
+      "name": "Daily minimum temperature of water in an evaporation pan (tenths of degrees C)",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "MXPN",
+      "name": "Daily maximum temperature of water in an evaporation pan (tenths of degrees C)",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "PGTM",
+      "name": "Peak gust time (hours and minutes, i.e., HHMM)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "PRCP",
+      "name": "Precipitation",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "millimeters",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 2,
+      "standardOutputUnits": "inches",
+      "units": "millimeters"
+    },
+    {
+      "id": "PSUN",
+      "name": "Daily percent of possible sunshine",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "percent"
+    },
+    {
+      "id": "SN01",
+      "name": "Minimum soil temperature with unknown cover at 5 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 2,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN02",
+      "name": "Minimum soil temperature with unknown cover at 10 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN03",
+      "name": "Minimum soil temperature with unknown cover at 20 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN11",
+      "name": "Minimum soil temperature with grass cover at 5 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN12",
+      "name": "Minimum soil temperature with grass cover at 10 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN13",
+      "name": "Minimum soil temperature with grass cover at 20 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN14",
+      "name": "Minimum soil temperature with grass cover at 50 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN21",
+      "name": "Minimum soil temperature with fallow cover at 5 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN22",
+      "name": "Minimum soil temperature with fallow cover at 10 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN23",
+      "name": "Minimum soil temperature with fallow cover at 20 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN31",
+      "name": "Minimum soil temperature with bare ground cover at 5 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN32",
+      "name": "Minimum soil temperature with bare ground cover at 10 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN33",
+      "name": "Minimum soil temperature with bare ground cover at 20 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN34",
+      "name": "Minimum soil temperature with bare ground cover at 50 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN35",
+      "name": "Minimum soil temperature with bare ground cover at 100 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN36",
+      "name": "Minimum soil temperature with bare ground cover at 150 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN51",
+      "name": "Minimum soil temperature with sod cover at 5 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN52",
+      "name": "Minimum soil temperature with sod cover at 10 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN53",
+      "name": "Minimum soil temperature with sod cover at 20 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN54",
+      "name": "Minimum soil temperature with sod cover at 50 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN55",
+      "name": "Minimum soil temperature with sod cover at 100 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN56",
+      "name": "Minimum soil temperature with sod cover at 150 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN57",
+      "name": "Minimum soil temperature with sod cover at 180 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 2,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN61",
+      "name": "Minimum soil temperature with straw multch cover at 5 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN72",
+      "name": "Minimum soil temperature with grass muck cover at 10 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN81",
+      "name": "Minimum soil temperature with bare muck cover at 5 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN82",
+      "name": "Minimum soil temperature with bare muck cover at 10 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SN83",
+      "name": "Minimum soil temperature with bare muck cover at 20 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SNOW",
+      "name": "Snowfall (mm)",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "millimeters",
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "inches",
+      "units": "millimeters"
+    },
+    {
+      "id": "SNWD",
+      "name": "Snow depth (mm)",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "millimeters",
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "inches",
+      "units": "millimeters"
+    },
+    {
+      "id": "SX01",
+      "name": "Maximum soil temperature with unknown cover at 5 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX02",
+      "name": "Maximum soil temperature with unknown cover at 10 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX03",
+      "name": "Maximum soil temperature with unknown cover at 20 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX11",
+      "name": "Maximum soil temperature with grass cover at 5 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX12",
+      "name": "Maximum soil temperature with grass cover at 10 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX13",
+      "name": "Maximum soil temperature with grass cover at 20 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX14",
+      "name": "Maximum soil temperature with grass cover at 50 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX15",
+      "name": "Maximum soil temperature with grass cover at 100 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX17",
+      "name": "Maximum soil temperature with grass cover at 180 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX21",
+      "name": "Maximum soil temperature with fallow cover at 5 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX22",
+      "name": "Maximum soil temperature with fallow cover at 10 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX23",
+      "name": "Maximum soil temperature with fallow cover at 20 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX31",
+      "name": "Maximum soil temperature with bare ground cover at 5 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX32",
+      "name": "Maximum soil temperature with bare ground cover at 10 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX33",
+      "name": "Maximum soil temperature with bare ground cover at 20 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX34",
+      "name": "Maximum soil temperature with bare ground cover at 50 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX35",
+      "name": "Maximum soil temperature with bare ground cover at 100 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX36",
+      "name": "Maximum soil temperature with bare ground cover at 150 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX51",
+      "name": "Maximum soil temperature with sod cover at 5 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX52",
+      "name": "Maximum soil temperature with sod cover at 10 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX53",
+      "name": "Maximum soil temperature with sod cover at 20 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX54",
+      "name": "Maximum soil temperature with sod cover at 50 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX55",
+      "name": "Maximum soil temperature with sod cover at 100 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX56",
+      "name": "Maximum soil temperature with sod cover at 150 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX57",
+      "name": "Maximum soil temperature with sod cover at 180 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX61",
+      "name": "Maximum soil temperature with straw multch cover at 5 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX72",
+      "name": "Maximum soil temperature with grass muck cover at 10 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX81",
+      "name": "Maximum soil temperature with bare muck cover at 5 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX82",
+      "name": "Maximum soil temperature with bare muck cover at 10 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "SX83",
+      "name": "Maximum soil temperature with bare muck cover at 20 cm depth",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "TAVG",
+      "name": "Average temperature",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 10,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "THIC",
+      "name": "Thickness of ice on water",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "millimeters",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "inches",
+      "units": "millimeters"
+    },
+    {
+      "id": "TMAX",
+      "name": "Maximum temperature (tenths of degrees C)",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 10,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "TMIN",
+      "name": "Minimum temperature (tenths of degrees C)",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 10,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "TOBS",
+      "name": "Temperature at the time of observation (tenths of degrees C)",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "celsius",
+      "scaleFactor": 0.1,
+      "searchWeight": 10,
+      "standardOutputPrecision": 0,
+      "standardOutputUnits": "fahrenheit",
+      "units": "celsius"
+    },
+    {
+      "id": "TSUN",
+      "name": "Daily total sunshine (minutes)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "minutes"
+    },
+    {
+      "id": "WDF1",
+      "name": "Direction of fastest 1-minute wind (degrees)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "degrees"
+    },
+    {
+      "id": "WDF2",
+      "name": "Direction of fastest 2-minute wind (degrees)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "degrees"
+    },
+    {
+      "id": "WDF5",
+      "name": "Direction of fastest 5-second wind (degrees)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "degrees"
+    },
+    {
+      "id": "WDFG",
+      "name": "Direction of peak wind gust (degrees)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "degrees"
+    },
+    {
+      "id": "WDFI",
+      "name": "Direction of highest instantaneous wind (degrees)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "degrees"
+    },
+    {
+      "id": "WDFM",
+      "name": "Fastest mile wind direction (degrees)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "degrees"
+    },
+    {
+      "id": "WDMV",
+      "name": "24-hour wind movement",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "kilometers",
+      "scaleFactor": 1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "miles",
+      "units": "kilometers"
+    },
+    {
+      "id": "WESD",
+      "name": "Water equivalent of snow on the ground",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "millimeters",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "inches",
+      "units": "millimeters"
+    },
+    {
+      "id": "WESF",
+      "name": "Water equivalent of snowfall",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "millimeters",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "inches",
+      "units": "millimeters"
+    },
+    {
+      "id": "WSF1",
+      "name": "Fastest 1-minute wind speed",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "meters per second",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "miles per hour",
+      "units": "meters per second"
+    },
+    {
+      "id": "WSF2",
+      "name": "Fastest 2-minute wind speed",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "meters per second",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "miles per hour",
+      "units": "meters per second"
+    },
+    {
+      "id": "WSF5",
+      "name": "Fastest 5-second wind speed",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "meters per second",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "miles per hour",
+      "units": "meters per second"
+    },
+    {
+      "id": "WSFG",
+      "name": "Peak guest wind speed",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "meters per second",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "miles per hour",
+      "units": "meters per second"
+    },
+    {
+      "id": "WSFI",
+      "name": "Highest instantaneous wind speed",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "meters per second",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "miles per hour",
+      "units": "meters per second"
+    },
+    {
+      "id": "WSFM",
+      "name": "Fastest mile wind speed",
+      "metricOutputPrecision": 1,
+      "metricOutputUnits": "meters per second",
+      "scaleFactor": 0.1,
+      "searchWeight": 1,
+      "standardOutputPrecision": 1,
+      "standardOutputUnits": "miles per hour",
+      "units": "meters per second"
+    },
+    {
+      "id": "WT01",
+      "name": "Fog, ice fog, or freezing fog (may include heavy fog)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT02",
+      "name": "Heavy fog or heaving freezing fog (not always distinguished from fog)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT03",
+      "name": "Thunder",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT04",
+      "name": "Ice pellets, sleet, snow pellets, or small hail",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT05",
+      "name": "Hail (may include small hail)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT06",
+      "name": "Glaze or rime",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT07",
+      "name": "Dust, volcanic ash, blowing dust, blowing sand, or blowing obstruction",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT08",
+      "name": "Smoke or haze",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT09",
+      "name": "Blowing or drifting snow",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT10",
+      "name": "Tornado, waterspout, or funnel cloud",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT11",
+      "name": "High or damaging winds",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT12",
+      "name": "Blowing spray",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT13",
+      "name": "Mist",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT14",
+      "name": "Drizzle",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT15",
+      "name": "Freezing drizzle",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT16",
+      "name": "Rain (may include freezing rain, drizzle, and freezing drizzle)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT17",
+      "name": "Freezing rain",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT18",
+      "name": "Snow, snow pellets, snow grains, or ice crystals",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT19",
+      "name": "Unknown source of precipitation",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT21",
+      "name": "Ground fog",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WT22",
+      "name": "Ice fog or freezing fog",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WV01",
+      "name": "Fog, ice fog, or freezing fog (may include heavy fog)",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WV03",
+      "name": "Thunder",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WV07",
+      "name": "Ash, dust, sand, or other blowing obstruction",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WV18",
+      "name": "Snow or ice crystals",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "WV20",
+      "name": "Rain or snow shower",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "alt",
+      "name": "the elevation of a geophysical point of observation relative to Mean Sea Level",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "meters"
+    },
+    {
+      "id": "station_info",
+      "name": "name of the station",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "station_name",
+      "name": "station identification code",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0
+    },
+    {
+      "id": "time",
+      "name": "time of observation",
+      "metricOutputPrecision": 0,
+      "scaleFactor": 0,
+      "searchWeight": 1,
+      "standardOutputPrecision": 0,
+      "units": "minutes since 1970-01-01 00:00:00"
+    }
+  ],
+  "formats": ["pdf", "csv", "json"]
+}
