@@ -46,6 +46,15 @@ print(f"Recorded datatypes at station: {mill_d.data_types}")  # Data types avail
 print(f"Has TMAX?: {mill_d.has_data_type('TMAX')}")  # Check if the station has data_type TMAX
 ```
 
+    Station name: MILL D NORTH, UT US
+    Station ID: USS0011J65S
+    Station latitude: 40.66
+    Station longitude: -111.64
+    Station elevation: 2733.1
+    Recorded datatypes at station: [{'coverage': 99.33507170795306, 'endDate': '2025-06-21T23:59:59', 'dateRange': {'start': '2004-06-21T00:00:00', 'end': '2025-06-21T23:59:59'}, 'searchWeight': 1, 'id': 'TMAX', 'startDate': '2004-06-21T00:00:00'}, {'coverage': 100.0, 'endDate': '2025-06-21T23:59:59', 'dateRange': {'start': '1988-09-30T00:00:00', 'end': '2025-06-21T23:59:59'}, 'searchWeight': 1, 'id': 'WESD', 'startDate': '1988-09-30T00:00:00'}, {'coverage': 99.29595827900913, 'endDate': '2025-06-21T23:59:59', 'dateRange': {'start': '2004-06-21T00:00:00', 'end': '2025-06-21T23:59:59'}, 'searchWeight': 1, 'id': 'TAVG', 'startDate': '2004-06-21T00:00:00'}, {'coverage': 99.29595827900913, 'endDate': '2025-06-21T23:59:59', 'dateRange': {'start': '2004-06-21T00:00:00', 'end': '2025-06-21T23:59:59'}, 'searchWeight': 1, 'id': 'TMIN', 'startDate': '2004-06-21T00:00:00'}, {'coverage': 100.0, 'endDate': '2025-06-19T23:59:59', 'dateRange': {'start': '1988-10-01T00:00:00', 'end': '2025-06-19T23:59:59'}, 'searchWeight': 1, 'id': 'PRCP', 'startDate': '1988-10-01T00:00:00'}, {'coverage': 99.30899608865711, 'endDate': '2025-06-21T23:59:59', 'dateRange': {'start': '2004-06-21T00:00:00', 'end': '2025-06-21T23:59:59'}, 'searchWeight': 1, 'id': 'TOBS', 'startDate': '2004-06-21T00:00:00'}, {'coverage': 99.88265971316818, 'endDate': '2025-06-21T23:59:59', 'dateRange': {'start': '2004-06-21T00:00:00', 'end': '2025-06-21T23:59:59'}, 'searchWeight': 1, 'id': 'SNWD', 'startDate': '2004-06-21T00:00:00'}]
+    Has TMAX?: True
+
+
 ### 2. Find Stations by Geographic Boundaries
 
 You can search for all stations within a specific rectangular area defined by latitude and longitude boundaries:
@@ -63,6 +72,22 @@ for station in stations_in_boundary_test:
     print(f"Station name: {station.name}, ID: {station.station_id}")
 ```
 
+    Found 13 stations in the specified boundary:
+    Station name: TRIAL LAKE, UT US, ID: USS0010J52S
+    Station name: BURTS MILLER RANCH, UT US, ID: USS0010J06S
+    Station name: BEAR RIVER RANGER STATION, UT US, ID: USS0010J17S
+    Station name: ROCK CREEK, UT US, ID: USS0010J18S
+    Station name: STEEL CREEK PARK, UT US, ID: USS0010J20S
+    Station name: EF BLACKS FORK GS, UT US, ID: USS0010J21S
+    Station name: BLACKS FORK JCT, UT US, ID: USS0010J22S
+    Station name: BUCK PASTURE, UT US, ID: USS0010J23S
+    Station name: BROWN DUCK, UT US, ID: USS0010J30S
+    Station name: LILY LAKE, UT US, ID: USS0010J35S
+    Station name: HAYDEN FORK, UT US, ID: USS0010J44S
+    Station name: BEAR RIVER UTAH, UT US, ID: USR0000BEAR
+    Station name: BLACKS FORK COMMISSARY, UT US, ID: USC00420734
+
+
 ### 3. Find Closest Station to a Point
 
 You can find the weather station closest to any given latitude and longitude:
@@ -74,6 +99,9 @@ You can find the weather station closest to any given latitude and longitude:
 closest_to_peale = ncei_db.find_closest_station(38.438212, -109.228878)  # Mt Peale, UT
 print(f"Closest station to Mt Peale: {closest_to_peale.name}, ID: {closest_to_peale.station_id}")
 ```
+
+    Closest station to Mt Peale: LASAL MOUNTAIN, UT US, ID: USS0009L03S
+
 
 ## Retrieving Weather Data
 
@@ -96,6 +124,72 @@ print(f"Retrieved {len(mill_d_sd_df)} records of snow depth data")
 mill_d_sd_df.head()
 ```
 
+    Retrieved 842 records of snow depth data
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATE</th>
+      <th>STATION</th>
+      <th>SNWD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-01-01</td>
+      <td>USS0011J65S</td>
+      <td>1829</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023-01-02</td>
+      <td>USS0011J65S</td>
+      <td>1753</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023-01-03</td>
+      <td>USS0011J65S</td>
+      <td>1727</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023-01-04</td>
+      <td>USS0011J65S</td>
+      <td>1676</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023-01-05</td>
+      <td>USS0011J65S</td>
+      <td>1727</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 ### Understanding Data Types and Units
 
 It's important to understand the units and scale factors for each data type. Let's examine the snow depth data type:
@@ -107,6 +201,10 @@ print("Snow depth (SNWD) data type reference:")
 print(dataType_ref["SNWD"].__dict__)
 ```
 
+    Snow depth (SNWD) data type reference:
+    {'id': 'SNWD', 'name': 'Snow depth (mm)', 'units': 'millimeters', 'metric_output_units': 'millimeters', 'metric_output_precision': 1, 'standard_output_units': 'inches', 'standard_output_precision': 1, 'scale_factor': 1, 'scale_weight': None}
+
+
 
 ```python
 # Convert data types and apply scale factors
@@ -116,6 +214,72 @@ mill_d_sd_df["SNWD"] = mill_d_sd_df["SNWD"] / 10  # Convert from mm to cm
 print("Processed snow depth data:")
 mill_d_sd_df.head()
 ```
+
+    Processed snow depth data:
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATE</th>
+      <th>STATION</th>
+      <th>SNWD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-01-01</td>
+      <td>USS0011J65S</td>
+      <td>182.9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023-01-02</td>
+      <td>USS0011J65S</td>
+      <td>175.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023-01-03</td>
+      <td>USS0011J65S</td>
+      <td>172.7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023-01-04</td>
+      <td>USS0011J65S</td>
+      <td>167.6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023-01-05</td>
+      <td>USS0011J65S</td>
+      <td>172.7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 ### Getting Daily High and Low Temperatures
 
@@ -135,6 +299,78 @@ print(f"Retrieved {len(mill_d_hilow_df)} records of temperature data")
 mill_d_hilow_df.head()
 ```
 
+    Retrieved 841 records of temperature data
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATE</th>
+      <th>STATION</th>
+      <th>TMAX</th>
+      <th>TMIN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-01-01</td>
+      <td>USS0011J65S</td>
+      <td>-1</td>
+      <td>-81</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023-01-02</td>
+      <td>USS0011J65S</td>
+      <td>-53</td>
+      <td>-101</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023-01-03</td>
+      <td>USS0011J65S</td>
+      <td>-55</td>
+      <td>-111</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023-01-04</td>
+      <td>USS0011J65S</td>
+      <td>-3</td>
+      <td>-111</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023-01-05</td>
+      <td>USS0011J65S</td>
+      <td>-10</td>
+      <td>-57</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 ### Understanding Temperature Data Units
 
 Let's examine the temperature data type references to understand the scale factors:
@@ -147,6 +383,13 @@ print(dataType_ref["TMAX"].__dict__)
 print("\nDaily minimum temperature (TMIN) data type reference:")
 print(dataType_ref["TMIN"].__dict__)
 ```
+
+    Daily maximum temperature (TMAX) data type reference:
+    {'id': 'TMAX', 'name': 'Maximum temperature (tenths of degrees C)', 'units': 'celsius', 'metric_output_units': 'celsius', 'metric_output_precision': 1, 'standard_output_units': 'fahrenheit', 'standard_output_precision': 0, 'scale_factor': 0.1, 'scale_weight': None}
+    
+    Daily minimum temperature (TMIN) data type reference:
+    {'id': 'TMIN', 'name': 'Minimum temperature (tenths of degrees C)', 'units': 'celsius', 'metric_output_units': 'celsius', 'metric_output_precision': 1, 'standard_output_units': 'fahrenheit', 'standard_output_precision': 0, 'scale_factor': 0.1, 'scale_weight': None}
+
 
 
 ```python
@@ -162,6 +405,78 @@ mill_d_hilow_df["TMIN"] = mill_d_hilow_df["TMIN"] / 10  # Convert from tenths of
 print("Processed temperature data:")
 mill_d_hilow_df.head()
 ```
+
+    Processed temperature data:
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATE</th>
+      <th>STATION</th>
+      <th>TMAX</th>
+      <th>TMIN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-01-01</td>
+      <td>USS0011J65S</td>
+      <td>-0.1</td>
+      <td>-8.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023-01-02</td>
+      <td>USS0011J65S</td>
+      <td>-5.3</td>
+      <td>-10.1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023-01-03</td>
+      <td>USS0011J65S</td>
+      <td>-5.5</td>
+      <td>-11.1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023-01-04</td>
+      <td>USS0011J65S</td>
+      <td>-0.3</td>
+      <td>-11.1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023-01-05</td>
+      <td>USS0011J65S</td>
+      <td>-1.0</td>
+      <td>-5.7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 ## Data Visualization
 
@@ -187,6 +502,12 @@ fig.update_layout(
 fig.show()
 ```
 
+
+    
+![png](images/output_20_0.png)
+    
+
+
 ## Advanced Analysis: Combining Temperature and Snow Depth Data
 
 ### Merging Datasets
@@ -204,6 +525,84 @@ print(f"Combined dataset has {len(mill_d_combined_df)} records")
 mill_d_combined_df.head()
 ```
 
+    Combined dataset has 841 records
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATE</th>
+      <th>STATION</th>
+      <th>SNWD</th>
+      <th>TMAX</th>
+      <th>TMIN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2023-01-01</td>
+      <td>USS0011J65S</td>
+      <td>182.9</td>
+      <td>-0.1</td>
+      <td>-8.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2023-01-02</td>
+      <td>USS0011J65S</td>
+      <td>175.3</td>
+      <td>-5.3</td>
+      <td>-10.1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2023-01-03</td>
+      <td>USS0011J65S</td>
+      <td>172.7</td>
+      <td>-5.5</td>
+      <td>-11.1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2023-01-04</td>
+      <td>USS0011J65S</td>
+      <td>167.6</td>
+      <td>-0.3</td>
+      <td>-11.1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2023-01-05</td>
+      <td>USS0011J65S</td>
+      <td>172.7</td>
+      <td>-1.0</td>
+      <td>-5.7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 ### Winter Season Analysis
 
 Let's focus on the winter and spring months of the 2023/2024 season to see the relationship between temperature and snow depth:
@@ -219,6 +618,84 @@ winter_2024 = mill_d_combined_df[
 print(f"Winter 2023/2024 dataset has {len(winter_2024)} records")
 winter_2024.head()
 ```
+
+    Winter 2023/2024 dataset has 152 records
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATE</th>
+      <th>STATION</th>
+      <th>SNWD</th>
+      <th>TMAX</th>
+      <th>TMIN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>334</th>
+      <td>2023-12-01</td>
+      <td>USS0011J65S</td>
+      <td>40.6</td>
+      <td>-6.7</td>
+      <td>-11.4</td>
+    </tr>
+    <tr>
+      <th>335</th>
+      <td>2023-12-02</td>
+      <td>USS0011J65S</td>
+      <td>55.9</td>
+      <td>-4.5</td>
+      <td>-9.7</td>
+    </tr>
+    <tr>
+      <th>336</th>
+      <td>2023-12-03</td>
+      <td>USS0011J65S</td>
+      <td>73.7</td>
+      <td>-1.6</td>
+      <td>-4.5</td>
+    </tr>
+    <tr>
+      <th>337</th>
+      <td>2023-12-04</td>
+      <td>USS0011J65S</td>
+      <td>68.6</td>
+      <td>1.5</td>
+      <td>-4.4</td>
+    </tr>
+    <tr>
+      <th>338</th>
+      <td>2023-12-05</td>
+      <td>USS0011J65S</td>
+      <td>63.5</td>
+      <td>9.2</td>
+      <td>-4.9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 ### Dual-Axis Visualization
 
@@ -261,6 +738,12 @@ fig.update_layout(
 
 fig.show()
 ```
+
+
+    
+![png](images/output_26_0.png)
+    
+
 
 ## Key Observations
 
