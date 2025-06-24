@@ -109,14 +109,15 @@ This will return a list of dictionaries, each containing the date and the snow d
 ```python
 import pandas as pd
 mill_d_sd_df = pd.DataFrame(mill_d_sd).dropna()
-mill_d_sd_df.head().to_markdown(index=False)
+print(mill_d_sd_df.head())
 ```
 
-
-
-
-    '| DATE       | STATION     |   SNWD |\n|:-----------|:------------|-------:|\n| 2023-01-01 | USS0011J65S |   1829 |\n| 2023-01-02 | USS0011J65S |   1753 |\n| 2023-01-03 | USS0011J65S |   1727 |\n| 2023-01-04 | USS0011J65S |   1676 |\n| 2023-01-05 | USS0011J65S |   1727 |'
-
+             DATE      STATION   SNWD
+    0  2023-01-01  USS0011J65S   1829
+    1  2023-01-02  USS0011J65S   1753
+    2  2023-01-03  USS0011J65S   1727
+    3  2023-01-04  USS0011J65S   1676
+    4  2023-01-05  USS0011J65S   1727
 
 
 ### Understanding Data Types and Units
@@ -138,13 +139,13 @@ This shows us that the units are in millimeters (mm) and that the scale factor i
 ```python
 mill_d_sd_df = mill_d_sd_df.astype({"DATE": "datetime64[s]", "SNWD": float})
 mill_d_sd_df["SNWD"] = mill_d_sd_df["SNWD"] / 10  # Convert from mm to cm
-mill_d_sd_df.head().to_markdown(index=False)
+mill_d_sd_df.head().to_markdown()
 ```
 
 
 
 
-    '| DATE                | STATION     |   SNWD |\n|:--------------------|:------------|-------:|\n| 2023-01-01 00:00:00 | USS0011J65S |  182.9 |\n| 2023-01-02 00:00:00 | USS0011J65S |  175.3 |\n| 2023-01-03 00:00:00 | USS0011J65S |  172.7 |\n| 2023-01-04 00:00:00 | USS0011J65S |  167.6 |\n| 2023-01-05 00:00:00 | USS0011J65S |  172.7 |'
+    '|    | DATE                | STATION     |   SNWD |\n|---:|:--------------------|:------------|-------:|\n|  0 | 2023-01-01 00:00:00 | USS0011J65S |  18.29 |\n|  1 | 2023-01-02 00:00:00 | USS0011J65S |  17.53 |\n|  2 | 2023-01-03 00:00:00 | USS0011J65S |  17.27 |\n|  3 | 2023-01-04 00:00:00 | USS0011J65S |  16.76 |\n|  4 | 2023-01-05 00:00:00 | USS0011J65S |  17.27 |'
 
 
 
@@ -161,14 +162,16 @@ mill_d_hilow = ncei_db.get_daily_hilow(
 
 # Convert to pandas DataFrame for easier manipulation
 mill_d_hilow_df = pd.DataFrame(mill_d_hilow).dropna()
-mill_d_hilow_df.head().to_markdown(index=False)
+print(mill_d_hilow_df.head().to_markdown(index=False))
 ```
 
-
-
-
-    '| DATE       | STATION     |   TMAX |   TMIN |\n|:-----------|:------------|-------:|-------:|\n| 2023-01-01 | USS0011J65S |     -1 |    -81 |\n| 2023-01-02 | USS0011J65S |    -53 |   -101 |\n| 2023-01-03 | USS0011J65S |    -55 |   -111 |\n| 2023-01-04 | USS0011J65S |     -3 |   -111 |\n| 2023-01-05 | USS0011J65S |    -10 |    -57 |'
-
+    | DATE       | STATION     |   TMAX |   TMIN |
+    |:-----------|:------------|-------:|-------:|
+    | 2023-01-01 | USS0011J65S |     -1 |    -81 |
+    | 2023-01-02 | USS0011J65S |    -53 |   -101 |
+    | 2023-01-03 | USS0011J65S |    -55 |   -111 |
+    | 2023-01-04 | USS0011J65S |     -3 |   -111 |
+    | 2023-01-05 | USS0011J65S |    -10 |    -57 |
 
 
 ### Understanding Temperature Data Units
