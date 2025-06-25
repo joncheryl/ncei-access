@@ -109,70 +109,16 @@ This will return a list of dictionaries, each containing the date and the snow d
 ```python
 import pandas as pd
 mill_d_sd_df = pd.DataFrame(mill_d_sd).dropna()
-mill_d_sd_df.head()
+print(mill_d_sd_df.head().to_markdown(index=False))
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>DATE</th>
-      <th>STATION</th>
-      <th>SNWD</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2023-01-01</td>
-      <td>USS0011J65S</td>
-      <td>1829</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2023-01-02</td>
-      <td>USS0011J65S</td>
-      <td>1753</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2023-01-03</td>
-      <td>USS0011J65S</td>
-      <td>1727</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2023-01-04</td>
-      <td>USS0011J65S</td>
-      <td>1676</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2023-01-05</td>
-      <td>USS0011J65S</td>
-      <td>1727</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
+| DATE       | STATION     |   SNWD |
+|:-----------|:------------|-------:|
+| 2023-01-01 | USS0011J65S |   1829 |
+| 2023-01-02 | USS0011J65S |   1753 |
+| 2023-01-03 | USS0011J65S |   1727 |
+| 2023-01-04 | USS0011J65S |   1676 |
+| 2023-01-05 | USS0011J65S |   1727 |
 
 
 ### Understanding Data Types and Units
@@ -194,14 +140,16 @@ This shows us that the units are in millimeters (mm) and that the scale factor i
 ```python
 mill_d_sd_df = mill_d_sd_df.astype({"DATE": "datetime64[s]", "SNWD": float})
 mill_d_sd_df["SNWD"] = mill_d_sd_df["SNWD"] / 10  # Convert from mm to cm
-mill_d_sd_df.head().to_html()
+print(mill_d_sd_df.head().to_markdown(index=False))
 ```
 
-
-
-
-    '<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>DATE</th>\n      <th>STATION</th>\n      <th>SNWD</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>2023-01-01</td>\n      <td>USS0011J65S</td>\n      <td>18.29</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>2023-01-02</td>\n      <td>USS0011J65S</td>\n      <td>17.53</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>2023-01-03</td>\n      <td>USS0011J65S</td>\n      <td>17.27</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>2023-01-04</td>\n      <td>USS0011J65S</td>\n      <td>16.76</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>2023-01-05</td>\n      <td>USS0011J65S</td>\n      <td>17.27</td>\n    </tr>\n  </tbody>\n</table>'
-
+| DATE                | STATION     |   SNWD |
+|:--------------------|:------------|-------:|
+| 2023-01-01 00:00:00 | USS0011J65S |  18.29 |
+| 2023-01-02 00:00:00 | USS0011J65S |  17.53 |
+| 2023-01-03 00:00:00 | USS0011J65S |  17.27 |
+| 2023-01-04 00:00:00 | USS0011J65S |  16.76 |
+| 2023-01-05 00:00:00 | USS0011J65S |  17.27 |
 
 
 ### Getting Daily High and Low Temperatures
@@ -217,76 +165,16 @@ mill_d_hilow = ncei_db.get_daily_hilow(
 
 # Convert to pandas DataFrame for easier manipulation
 mill_d_hilow_df = pd.DataFrame(mill_d_hilow).dropna()
-mill_d_hilow_df.head()
+print(mill_d_hilow_df.head().to_markdown(index=False))
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>DATE</th>
-      <th>STATION</th>
-      <th>TMAX</th>
-      <th>TMIN</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2023-01-01</td>
-      <td>USS0011J65S</td>
-      <td>-1</td>
-      <td>-81</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2023-01-02</td>
-      <td>USS0011J65S</td>
-      <td>-53</td>
-      <td>-101</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2023-01-03</td>
-      <td>USS0011J65S</td>
-      <td>-55</td>
-      <td>-111</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2023-01-04</td>
-      <td>USS0011J65S</td>
-      <td>-3</td>
-      <td>-111</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2023-01-05</td>
-      <td>USS0011J65S</td>
-      <td>-10</td>
-      <td>-57</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
+| DATE       | STATION     |   TMAX |   TMIN |
+|:-----------|:------------|-------:|-------:|
+| 2023-01-01 | USS0011J65S |     -1 |    -81 |
+| 2023-01-02 | USS0011J65S |    -53 |   -101 |
+| 2023-01-03 | USS0011J65S |    -55 |   -111 |
+| 2023-01-04 | USS0011J65S |     -3 |   -111 |
+| 2023-01-05 | USS0011J65S |    -10 |    -57 |
 
 
 ### Understanding Temperature Data Units
@@ -317,76 +205,16 @@ mill_d_hilow_df = mill_d_hilow_df.astype(
 )
 mill_d_hilow_df["TMAX"] = mill_d_hilow_df["TMAX"] / 10
 mill_d_hilow_df["TMIN"] = mill_d_hilow_df["TMIN"] / 10
-mill_d_hilow_df.head()
+print(mill_d_hilow_df.head().to_markdown(index=False))
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>DATE</th>
-      <th>STATION</th>
-      <th>TMAX</th>
-      <th>TMIN</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2023-01-01</td>
-      <td>USS0011J65S</td>
-      <td>-0.1</td>
-      <td>-8.1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2023-01-02</td>
-      <td>USS0011J65S</td>
-      <td>-5.3</td>
-      <td>-10.1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2023-01-03</td>
-      <td>USS0011J65S</td>
-      <td>-5.5</td>
-      <td>-11.1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2023-01-04</td>
-      <td>USS0011J65S</td>
-      <td>-0.3</td>
-      <td>-11.1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2023-01-05</td>
-      <td>USS0011J65S</td>
-      <td>-1.0</td>
-      <td>-5.7</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
+| DATE                | STATION     |   TMAX |   TMIN |
+|:--------------------|:------------|-------:|-------:|
+| 2023-01-01 00:00:00 | USS0011J65S |   -0.1 |   -8.1 |
+| 2023-01-02 00:00:00 | USS0011J65S |   -5.3 |  -10.1 |
+| 2023-01-03 00:00:00 | USS0011J65S |   -5.5 |  -11.1 |
+| 2023-01-04 00:00:00 | USS0011J65S |   -0.3 |  -11.1 |
+| 2023-01-05 00:00:00 | USS0011J65S |   -1   |   -5.7 |
 
 
 ### Plotting Temperature Data
@@ -413,7 +241,7 @@ fig.show()
 
 
     
-![png](output_24_0.png)
+![png](images/output_24_0.png)
     
 
 
@@ -479,7 +307,7 @@ fig.show()
 
 
     
-![png](output_30_0.png)
+![png](images/output_30_0.png)
     
 
 
