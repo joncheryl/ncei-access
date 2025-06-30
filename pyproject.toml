@@ -7,4 +7,6 @@ authors = [{ name = "John Sherrill" }]
 license = { text = "Apache-2.0" }
 requires-python = ">=3.9"
 classifiers = ["License :: OSI Approved :: Apache Software License"]
-dependencies = []
+dependencies = [
+    "requests>=2.20.0"
+]
