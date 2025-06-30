@@ -1,5 +1,7 @@
 .venv_ncei_access/
+.vscode
 .DS_Store
+.ipynb_checkpoints
 __pycache__/
 dist/
 
