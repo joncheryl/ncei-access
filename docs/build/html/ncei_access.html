@@ -102,6 +102,29 @@ formula.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="ncei_access.models.Station.elevation">
+<span class="sig-name descname"><span class="pre">elevation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#ncei_access.models.Station.elevation" title="Link to this definition">¶</a></dt>
+<dd><p>Return the elevation of the station in meters. If start and/or end dates are
+provided, return the elevations if it’s recorded during that period. If no dates are
+provided, return the most recent elevation record. This is actually kindof a hack
+because the NCEI API doesn’t seem to include station elevation in the station
+metadata but it <em>is</em> recorded as a daily data type. So we just get the daily
+elevation data and return the most-ish recent record or all records if dates are
+provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_date</strong> – Optional start date to check for elevation records, defaults to ‘2015-01-01’</p></li>
+<li><p><strong>end_date</strong> – Optional end date to check for elevation records, defaults to ‘2025-01-01’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elevation in meters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="ncei_access.models.Station.has_data_type">
 <span class="sig-name descname"><span class="pre">has_data_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#ncei_access.models.Station.has_data_type" title="Link to this definition">¶</a></dt>
 <dd><p>Return true if data_type of interest is recorded at station and if optional
@@ -274,13 +297,37 @@ period of interest. For convenience, this is a wrapper around get_daily.</p>
 </section>
 <section id="module-ncei_access">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ncei_access" title="Link to this heading">¶</a></h2>
-<p>Just creating the dataType_ref object here for convenience later.</p>
+<p>Includes dataType_ref and dataSet_ref objects.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ncei_access.DataSet">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ncei_access.</span></span><span class="sig-name descname"><span class="pre">DataSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncei_access.DataSet" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Contains metadata for the different data sets in the Access API. Here we include
+the following attributes but they are not comprehensive:</p>
+<ul class="simple">
+<li><p>id: The ID of the dataset.</p></li>
+<li><p>name: The name of the dataset.</p></li>
+<li><p>dataTypes: A list of data type IDs that are available in the dataset.</p></li>
+</ul>
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="ncei_access.DataType">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ncei_access.</span></span><span class="sig-name descname"><span class="pre">DataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ncei_access.DataType" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Convenience? class for storing info about the different data types in the
-daily-summaries dataset.</p>
+<p>Contains metadata for the different data types in the daily-summaries dataset.
+May include (but not necessarily) the following attributes:</p>
+<ul class="simple">
+<li><p>id: The ID of the data type.</p></li>
+<li><p>name: The name of the data type.</p></li>
+<li><p>units: The units of the data type.</p></li>
+<li><p>metricOutputUnits: The metric output units of the data type.</p></li>
+<li><p>metricOutputPrecision: The precision of the metric output.</p></li>
+<li><p>standardOutputUnits: The output units of the data type if requested in Imperial units.</p></li>
+<li><p>standardOutputPrecision: The precision of the standard output if requested in Imperial units.</p></li>
+<li><p>scaleFactor: The scale factor for the data type. Eg. if scaleFactor is 10, then the value is in tenths of the unit. If scaleFactor is 1, then the value is in the unit directly.</p></li>
+<li><p>scaleWeight: The scale weight for the data type. ???</p></li>
+</ul>
 </dd></dl>
 
 </section>
