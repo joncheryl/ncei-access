@@ -192,7 +192,7 @@ class NceiAccessor:
 
         return Station(
             name=station_results[0]["stations"][0]["name"],
-            station_id=station_results[0]["stations"][0]["name"],
+            station_id=station_results[0]["stations"][0]["id"],
             lat=station_results[0]["location"]["coordinates"][1],
             lon=station_results[0]["location"]["coordinates"][0],
             data_types=station_results[0]["stations"][0]["dataTypes"],
